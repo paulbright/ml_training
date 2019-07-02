@@ -1,0 +1,3 @@
+https://www.kaggle.com/datasets
+https://toolbox.google.com/datasetsearch
+https://archive.ics.uci.edu/ml/datasets.html
