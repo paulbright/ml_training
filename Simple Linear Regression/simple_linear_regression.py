@@ -4,6 +4,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import sklearn 
+import math 
 
 # Importing the dataset
 dataset = pd.read_csv('Salary_Data.csv')
@@ -12,7 +14,7 @@ y = dataset.iloc[:, 1].values
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 1)
 
 # Feature Scaling
 """from sklearn.preprocessing import StandardScaler
@@ -29,6 +31,11 @@ regressor.fit(X_train, y_train)
 
 # Predicting the Test set results
 y_pred = regressor.predict(X_test)
+
+mae = sklearn.metrics.mean_absolute_error(y_test, y_pred)
+mse = sklearn.metrics.mean_squared_error(y_test, y_pred)
+print('MAE:', mae)
+print('RMSE:', math.sqrt(mse) )
 
 # Visualising the Training set results
 plt.scatter(X_train, y_train, color = 'red')
@@ -50,5 +57,7 @@ plt.show()
 test_years =  np.array([0,1,2,3,4,6,7,8,9,10,15,20])
 test_years = test_years.reshape(-1,1)
 predicted_salaries = regressor.predict(test_years)
-
 print(predicted_salaries)
+
+
+
